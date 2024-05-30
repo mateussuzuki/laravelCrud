@@ -13,7 +13,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-warning">
     <div class="container-fluid">
-      <a class="navbar-brand h1" href="{{ route('produtos.index') }}">CRUDPosts</a>
+      <a class="navbar-brand h1" href="{{ route('produtos.index') }}">Crud Produtos</a>
       <div class="justify-end ">
         <div class="col ">
           <a class="btn btn-sm btn-success" href="{{ route('produtos.create') }}">Add Post</a>

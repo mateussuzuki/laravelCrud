@@ -22,6 +22,12 @@ class ProdutoController
       return view('create');
     }
 
+    public function edit($id)
+  {
+    $produto = Produto::find($id);
+    return view('edit', compact('produto'));
+  }
+
 
     public function store(Request $request)
     {
@@ -43,12 +49,16 @@ class ProdutoController
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'codigo' => 'required|max:13',
+            'codigo' => 'required|digits:13|numeric',
             'nome' => 'required',
-          ]);
+            'descricao' => 'required',
+            'imagem' => 'required|nullable',
+        ], [
+            'codigo.digits' => 'O campo :attribute deve ter exatamente :digits dígitos.',
+        ]);
           $produto = Produto::find($id);
           $produto->update($request->all());
-          return redirect()->route('index')
+          return redirect()->route('produtos.index')
             ->with('success', 'Produto alterado com sucesso');        
     }
 
