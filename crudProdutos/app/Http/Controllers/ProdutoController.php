@@ -63,6 +63,12 @@ class ProdutoController
             ->with('success', 'Produto alterado com sucesso');
     }
 
+    public function show($id)
+    {
+        $produto = Produto::find($id);
+        return view('show', compact('produto'));
+    }
+
 
     public function destroy(string $id)
     {

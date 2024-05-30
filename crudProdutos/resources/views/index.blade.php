@@ -65,9 +65,9 @@
         <td>{{ $produto->imagem }}</td>
         <td>
           <div class="row">
-          <!-- <a href="#" class="view mx-1" title="View" data-toggle="tooltip">
-      <i class="material-icons">&#xE417;</i>
-      </a> -->
+          <div class="col-auto">
+            <a href="{{ route('produtos.show', $produto->id) }}" class="btn btn-primary btn-sm">View</a>
+          </div>
           <div class="col-auto">
             <a href="{{ route('produtos.edit', $produto->id) }}" class="btn btn-primary btn-sm">Edit</a>
           </div>
