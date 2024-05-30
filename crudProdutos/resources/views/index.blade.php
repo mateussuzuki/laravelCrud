@@ -21,37 +21,6 @@
       </div>
     </div>
   </nav>
-  <!-- <div class="container mt-5">
-    <div class="row flex-column">
-      @foreach ($produtos as $produto)
-        <div class="col-sm">
-          <div class="card">
-            <div class="card-header">
-              <h5 class="card-title">{{ $produto->codigo }}</h5>
-            </div>
-            <div class="card-body">
-              <p class="card-text">{{ $produto->nome }}</p>
-            </div>
-            <div class="card-footer">
-              <div class="row">
-                <div class="col-sm">
-                  <a href="{{ route('produtos.edit', $produto->id) }}"
-            class="btn btn-primary btn-sm">Edit</a>
-                </div>
-                <div class="col-sm">
-                    <form action="{{ route('produtos.destroy', $produto->id) }}" method="post">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                    </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      @endforeach
-    </div>
-  </div> -->
   <div class="container-xl">
     <div class="table-wrapper">
       <div class="table-title">
@@ -96,19 +65,19 @@
         <td>{{ $produto->imagem }}</td>
         <td>
           <div class="row">
-            <!-- <a href="#" class="view mx-1" title="View" data-toggle="tooltip">
-            <i class="material-icons">&#xE417;</i>
-            </a> -->
-            <div class="col-sm">
+          <!-- <a href="#" class="view mx-1" title="View" data-toggle="tooltip">
+      <i class="material-icons">&#xE417;</i>
+      </a> -->
+          <div class="col-auto">
             <a href="{{ route('produtos.edit', $produto->id) }}" class="btn btn-primary btn-sm">Edit</a>
-            </div>
-            <div class="col-sm">
+          </div>
+          <div class="col-sm">
             <form action="{{ route('produtos.destroy', $produto->id) }}" method="post">
-              @csrf
-              @method('DELETE')
-              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
             </form>
-            </div>
+          </div>
           </div>
         </td>
 
@@ -118,48 +87,6 @@
 
         </tbody>
       </table>
-      <!-- <div class="clearfix">
-          <div class="hint-text">
-            Showing <b>5</b> out of <b>25</b> entries
-          </div>
-          <ul class="pagination">
-            <li class="page-item disabled">
-              <a href="#">
-                <i class="fa fa-angle-double-left"></i>
-              </a>
-            </li>
-            <li class="page-item">
-              <a href="#" class="page-link">
-                1
-              </a>
-            </li>
-            <li class="page-item">
-              <a href="#" class="page-link">
-                2
-              </a>
-            </li>
-            <li class="page-item active">
-              <a href="#" class="page-link">
-                3
-              </a>
-            </li>
-            <li class="page-item">
-              <a href="#" class="page-link">
-                4
-              </a>
-            </li>
-            <li class="page-item">
-              <a href="#" class="page-link">
-                5
-              </a>
-            </li>
-            <li class="page-item">
-              <a href="#" class="page-link">
-                <i class="fa fa-angle-double-right"></i>
-              </a>
-            </li>
-          </ul>
-        </div> -->
     </div>
   </div>
 </body>

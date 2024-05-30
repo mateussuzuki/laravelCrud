@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Models\Produto;
 
@@ -13,25 +14,24 @@ class ProdutoController
     public function index()
     {
         $produtos = Produto::all();
-
         return view('index', compact('produtos'));
     }
 
     public function create()
     {
-      return view('create');
+        return view('create');
     }
 
     public function edit($id)
-  {
-    $produto = Produto::find($id);
-    return view('edit', compact('produto'));
-  }
+    {
+        $produto = Produto::find($id);
+        return view('edit', compact('produto'));
+    }
 
 
     public function store(Request $request)
     {
-        
+
         $request->validate([
             'codigo' => 'required|digits:13|numeric',
             'nome' => 'required',
@@ -40,9 +40,10 @@ class ProdutoController
         ], [
             'codigo.digits' => 'O campo :attribute deve ter exatamente :digits dígitos.',
         ]);
-          Produto::create($request->all());
-          return redirect()->route('produtos.index')
-            ->with('success','Produto adicionado com sucesso.');
+
+        Produto::create($request->all());
+        return redirect()->route('produtos.index')
+            ->with('success', 'Produto adicionado com sucesso.');
     }
 
 
@@ -52,14 +53,14 @@ class ProdutoController
             'codigo' => 'required|digits:13|numeric',
             'nome' => 'required',
             'descricao' => 'required',
-            'imagem' => 'required|nullable',
+            'imagem' => 'nullable',
         ], [
             'codigo.digits' => 'O campo :attribute deve ter exatamente :digits dígitos.',
         ]);
-          $produto = Produto::find($id);
-          $produto->update($request->all());
-          return redirect()->route('produtos.index')
-            ->with('success', 'Produto alterado com sucesso');        
+        $produto = Produto::find($id);
+        $produto->update($request->all());
+        return redirect()->route('produtos.index')
+            ->with('success', 'Produto alterado com sucesso');
     }
 
 
@@ -67,7 +68,7 @@ class ProdutoController
     {
         $produto = Produto::find($id);
         $produto->delete();
-        return redirect()->route('index')
-        ->with('success', 'produto deletado com sucesso');
+        return redirect()->route('produtos.index')
+            ->with('success', 'produto deletado com sucesso');
     }
 }
