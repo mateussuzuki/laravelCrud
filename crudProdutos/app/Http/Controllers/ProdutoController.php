@@ -31,17 +31,17 @@ class ProdutoController
 
     public function store(Request $request)
     {
+        $this->validarRequestProduto($request);
+        $produto = [
+            'codigo' => $request->codigo,
+            'nome' => $request->nome,
+            'descricao' => $request->descricao,
+            'imagem' => $request->imagem,
+        ];
+        $produto['imagem'] = $this->converterImagemRequest($request);
 
-        $request->validate([
-            'codigo' => 'required|digits:13|numeric',
-            'nome' => 'required',
-            'descricao' => 'required',
-            'imagem' => 'required|nullable',
-        ], [
-            'codigo.digits' => 'O campo :attribute deve ter exatamente :digits dígitos.',
-        ]);
 
-        Produto::create($request->all());
+        Produto::create($produto);
         return redirect()->route('produtos.index')
             ->with('success', 'Produto adicionado com sucesso.');
     }
@@ -49,16 +49,16 @@ class ProdutoController
 
     public function update(Request $request, string $id)
     {
-        $request->validate([
-            'codigo' => 'required|digits:13|numeric',
-            'nome' => 'required',
-            'descricao' => 'required',
-            'imagem' => 'nullable',
-        ], [
-            'codigo.digits' => 'O campo :attribute deve ter exatamente :digits dígitos.',
-        ]);
+        $this->validarRequestProduto($request);
+
         $produto = Produto::find($id);
-        $produto->update($request->all());
+
+        $produto->descricao = $request->descricao;
+        $produto->nome = $request->nome;
+
+        $produto->imagem = $this->converterImagemRequest($request);
+        
+        $produto->save();
         return redirect()->route('produtos.index')
             ->with('success', 'Produto alterado com sucesso');
     }
@@ -76,5 +76,24 @@ class ProdutoController
         $produto->delete();
         return redirect()->route('produtos.index')
             ->with('success', 'produto deletado com sucesso');
+    }
+
+    private function validarRequestProduto(Request $request) {
+        $request->validate([
+            'codigo' => 'required|digits:13|numeric',
+            'nome' => 'required',
+            'descricao' => 'required',
+            'imagem' => 'nullable',
+        ], [
+            'codigo.digits' => 'O campo :attribute deve ter exatamente :digits dígitos.',
+        ]);
+    }
+
+    private function converterImagemRequest(Request $request) {
+        if($request->hasFile('imagem') && $request->imagem->isValid()) {
+            $imagempath = base64_encode(file_get_contents($request->imagem));
+            return $imagempath;
+        }
+        return null;
     }
 }

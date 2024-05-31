@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,13 @@
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <title>Ver Produtos</title>
 </head>
+
 <body>
-  
+
   <div class="container h-100 mt-5">
     <div class="row h-100 justify-content-center align-items-center">
       <div class="col-10 col-md-8 col-lg-6">
-        <form action="{{ route('produtos.index') }}" >
+        <form action="{{ route('produtos.index') }}">
           @csrf
           <div class="form-group">
             <label for="codigo">Codigo</label>
@@ -24,12 +26,16 @@
           </div>
           <div class="form-group">
             <label for="descricao">Descricao</label>
-            <input type="text" class="form-control" id="descricao" name="descricao" value="{{ $produto->descricao }}" disabled>
+            <input type="text" class="form-control" id="descricao" name="descricao" value="{{ $produto->descricao }}"
+              disabled>
           </div>
-          <div class="form-group">
-            <label for="imagem">Imagem</label>
-            <input type="text" class="form-control" id="imagem" name="imagem" value="{{ $produto->imagem }}" disabled>
-          </div>
+          @if ($produto->imagem)
+        <div class="form-group d-flex flex-column my-4">
+        <label>Imagem</label>
+        <img src="data:{{ $produto->imagem_type }};base64,{{ $produto->imagem }}" alt="Imagem do produto"
+          style="max-width: 250px;">
+        </div>
+      @endif
           <br>
           <button type="submit" class="btn btn-primary">Voltar</button>
         </form>
@@ -37,4 +43,5 @@
     </div>
   </div>
 </body>
+
 </html>

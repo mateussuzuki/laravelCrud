@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,14 @@
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <title>Adicionar Produtos</title>
 </head>
+
 <body>
-  
+
   <div class="container h-100 mt-5">
     <div class="row h-100 justify-content-center align-items-center">
       <div class="col-10 col-md-8 col-lg-6">
         <h3>Adicione um produto</h3>
-        <form action="{{ route('produtos.store') }}" method="post">
+        <form action="{{ route('produtos.store') }}" id="form" method="post" enctype="multipart/form-data">
           @csrf
           <div class="form-group">
             <label for="codigo">Codigo</label>
@@ -29,7 +31,7 @@
           </div>
           <div class="form-group">
             <label for="imagem">Imagem</label>
-            <input type="text" class="form-control" id="imagem" name="imagem">
+            <input type="file" class="form-control" id="imagem" name="imagem">
           </div>
           <br>
           <button type="submit" class="btn btn-primary">Adicionar produto</button>
@@ -37,5 +39,16 @@
       </div>
     </div>
   </div>
+  <script>
+    document.getElementById('imagem').addEventListener('change', function (event) {
+      var fileInput = document.getElementById('imagem');
+      var file = fileInput.files[0];
+      if (file.size > 10 * 1024 * 1024) {
+        fileInput.value = ""
+        alert('O tamanho da imagem excedeu o limite');
+      }
+    });
+  </script>
 </body>
+
 </html>

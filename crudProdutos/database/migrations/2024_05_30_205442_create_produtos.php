@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('codigo');
             $table->string('nome');
             $table->string('descricao');
-            $table->string('imagem');
+            $table->longText('imagem');
             $table->timestamps();
         });
     }
