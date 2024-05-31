@@ -39,6 +39,7 @@
       </div>
     </div>
   </div>
+
   <script>
     document.getElementById('imagem').addEventListener('change', function (event) {
       var fileInput = document.getElementById('imagem');

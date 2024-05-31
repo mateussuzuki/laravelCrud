@@ -55,9 +55,13 @@ class ProdutoController
 
         $produto->descricao = $request->descricao;
         $produto->nome = $request->nome;
-
-        $produto->imagem = $this->converterImagemRequest($request);
         
+
+        $img = $this->converterImagemRequest($request);
+        if($img !== null) {
+            $produto->imagem = $img;
+        }
+
         $produto->save();
         return redirect()->route('produtos.index')
             ->with('success', 'Produto alterado com sucesso');
@@ -78,22 +82,24 @@ class ProdutoController
             ->with('success', 'produto deletado com sucesso');
     }
 
-    private function validarRequestProduto(Request $request) {
+    private function validarRequestProduto(Request $request)
+    {
         $request->validate([
             'codigo' => 'required|digits:13|numeric',
             'nome' => 'required',
             'descricao' => 'required',
-            'imagem' => 'nullable',
         ], [
             'codigo.digits' => 'O campo :attribute deve ter exatamente :digits dígitos.',
         ]);
     }
 
-    private function converterImagemRequest(Request $request) {
-        if($request->hasFile('imagem') && $request->imagem->isValid()) {
+    private function converterImagemRequest(Request $request)
+    {
+        if ($request->hasFile('imagem') && $request->imagem->isValid()) {
             $imagempath = base64_encode(file_get_contents($request->imagem));
             return $imagempath;
         }
+
         return null;
     }
 }

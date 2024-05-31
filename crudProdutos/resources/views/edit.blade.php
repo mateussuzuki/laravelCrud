@@ -42,12 +42,13 @@
             <label for="imagem">Nova Imagem</label>
             <input type="file" class="form-control" id="imagem" name="imagem">
           </div>
-          <button type="submit" class="btn mt-3 btn-primary">Update Post</button>
+          <button type="submit" class="btn mt-3 btn-primary">Alterar dados</button>
         </form>
       </div>
     </div>
   </div>
 </body>
+
 <script>
   document.getElementById('imagem').addEventListener('change', function (event) {
     var fileInput = document.getElementById('imagem');
