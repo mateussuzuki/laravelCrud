@@ -3,6 +3,7 @@ Versão do Laravel: 11.9
 Versão do node: 20.11.1
 
 - Adicione no .env as configurações do banco, exemplo:
+  
 DB_CONNECTION=mysql
 
 DB_HOST=127.0.0.1
