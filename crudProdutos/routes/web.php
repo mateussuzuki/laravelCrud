@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\CorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
+
+require_once __DIR__.'/cores.php';
 
 Route::get('/', [ProdutoController::class, 'index'])->name('produtos.index');
 
@@ -14,3 +17,5 @@ Route::get('/produtos/{post}/edit', [ProdutoController::class, 'edit'])->name('p
 Route::put('/produtos/{post}', [ProdutoController::class, 'update'])->name('produtos.update');
 
 Route::delete('/produtos/{post}', [ProdutoController::class, 'destroy'])->name('produtos.destroy');
+
+
