@@ -33,4 +33,26 @@ class CorController extends Controller
         return redirect()->route('cores.index')
             ->with('success', 'Produto adicionado com sucesso.');
     }
+
+    public function edit($id)
+    {
+        $cor = Cor::find($id);
+        return view('coresProdutos.edit', compact('cor'));
+    }
+
+
+    public function update(Request $request, string $id)
+    {
+        $request->validate([
+            'nome' => 'required|string',
+        ]
+        );
+        $cor = Cor::find($id);
+
+
+        $cor -> nome = $request['nome'];
+
+        $cor->save();
+        return redirect()->route('cores.index');
+    }
 }

@@ -48,7 +48,7 @@
         <td>
           <div class="row">
           <div class="col-auto">
-            <a href="{{ route('produtos.edit', $cor->id) }}" class="btn btn-primary btn-sm">Edit</a>
+            <a href="{{ route('cores.edit', $cor->id) }}" class="btn btn-primary btn-sm">Edit</a>
           </div>
           <div class="col-sm">
             <form action="{{ route('produtos.destroy', $cor->id) }}" method="post">
