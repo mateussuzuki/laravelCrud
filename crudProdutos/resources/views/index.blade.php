@@ -17,6 +17,7 @@
       <div class="justify-end ">
         <div class="col ">
           <a class="btn btn-sm btn-success" href="{{ route('produtos.create') }}">Add Produto</a>
+          <a class="btn btn-sm btn-success" href="{{ route('cores.index') }}">Cores</a>
         </div>
       </div>
     </div>
