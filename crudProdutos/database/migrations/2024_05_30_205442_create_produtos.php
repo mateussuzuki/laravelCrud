@@ -11,11 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('cores_produtos', function (Blueprint $table) {
+            $table->id();
+            $table->string('nome');
+            $table->timestamps();
+        });
+        
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
             $table->string('codigo');
             $table->string('nome');
             $table->string('descricao');
+            $table->unsignedBigInteger('cor_id');
+            $table->foreign('cor_id')->references('id')->on('cores_produtos')->onDelete('cascade');
             $table->longText('imagem');
             $table->timestamps();
         });

@@ -55,4 +55,11 @@ class CorController extends Controller
         $cor->save();
         return redirect()->route('cores.index');
     }
+
+    public function destroy(string $id)
+    {
+        $cor = Cor::find($id);
+        $cor->delete();
+        return redirect()->route('cores.index');
+    }
 }

@@ -11,3 +11,5 @@ Route::post('/cores', [CorController::class, 'store'])->name('cores.store');
 Route::get('/cores/{post}/edit', [CorController::class, 'edit'])->name('cores.edit');
 Route::put('/cores/{post}', [CorController::class, 'update'])->name('cores.update');
 
+Route::delete('/cores/{post}', [CorController::class, 'destroy'])->name('cores.destroy');
+

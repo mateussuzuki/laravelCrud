@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Produto extends Model
 {
@@ -11,6 +12,7 @@ class Produto extends Model
         'codigo',
         'nome',
         'descricao',
+        'cor_id',
         'imagem',
       ];
 }

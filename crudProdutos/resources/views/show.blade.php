@@ -29,6 +29,11 @@
             <input type="text" class="form-control" id="descricao" name="descricao" value="{{ $produto->descricao }}"
               disabled>
           </div>
+          <div class="form-group">
+            <label for="cor_id">Cor</label>
+            <input type="text" class="form-control" id="cor_id" name="cor_id" value="{{ $produto->nomeCor }}"
+              disabled>
+          </div>
           @if ($produto->imagem)
         <div class="form-group d-flex flex-column my-4">
         <label>Imagem</label>

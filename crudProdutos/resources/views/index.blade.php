@@ -43,6 +43,7 @@
             <th>
               Descrição <i class="fa fa-sort"></i>
             </th>
+            <th>cor</th>
             <th>Imagem</th>
           </tr>
         </thead>
@@ -56,10 +57,11 @@
         <td>{{ $produto->codigo }}</td>
         <td>{{ $produto->nome }}</td>
         <td>{{ $produto->descricao }}</td>
+        <td>{{ $produto->nomeCor }}</td>
         <td>
           @if ($produto->imagem)
           <img src="data:image/jpg;base64,{{ $produto->imagem }}" alt="Imagem" style="max-width: 100px; max-height: 60px;">
-          @endif
+        @endif
         </td>
         <td>
           <div class="row">

@@ -10,7 +10,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-warning">
     <div class="container-fluid">
-      <a class="navbar-brand h1" href="{{ route('cores.index') }}">Cores</a>
+      <a class="navbar-brand h1" href="{{ route('produtos.index') }}">Produtos</a>
       <div class="justify-end ">
         <div class="col ">
           <a class="btn btn-sm btn-success" href="{{ route('cores.create') }}">Add Cor</a>
@@ -19,7 +19,7 @@
     </div>
     
   </nav>
-  <div class="container-xl">
+  <div class="container-xl mt-5">
     <div class="table-wrapper">
       <div class="table-title">
         <div class="row">
@@ -51,7 +51,7 @@
             <a href="{{ route('cores.edit', $cor->id) }}" class="btn btn-primary btn-sm">Edit</a>
           </div>
           <div class="col-sm">
-            <form action="{{ route('produtos.destroy', $cor->id) }}" method="post">
+            <form action="{{ route('cores.destroy', $cor->id) }}" method="post">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger btn-sm">Delete</button>

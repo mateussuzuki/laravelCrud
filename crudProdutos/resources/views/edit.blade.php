@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <title>Alterar produto</title>
 </head>
 
@@ -30,6 +31,22 @@
             <label for="descricao">Descricao</label>
             <textarea class="form-control" id="descricao" name="descricao" rows="3"
               required>{{ $produto->descricao }}</textarea>
+          </div>
+            <div class="form-group my-3 row">
+            <div class="col-11">
+              <label for="cor_id">Cor</label>
+              <select name="cor_id" id="cor_id" class="form-select">
+                @forEach($cores as $cor)
+                  <option {{ $cor->id == $produto->cor_id ? "selected" : "" }} value="{{ $cor->id }}">{{ $cor->nome }}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="col-1 d-flex align-items-end justify-content-center">
+              <a class="btn btn-primary" href="/cores">
+              <i class="bi bi-plus"></i>
+              </a>
+            </div>
+
           </div>
           @if ($produto->imagem)
         <div class="form-group d-flex flex-column my-4">
