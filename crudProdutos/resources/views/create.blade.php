@@ -20,7 +20,7 @@
           @csrf
           <div class="form-group">
             <label for="codigo">Codigo</label>
-            <input type="text" class="form-control" id="codigo" name="codigo" required>
+            <input type="text" class="form-control" id="codigo" name="codigo" required placeholder="Digite um código com 13 números">
           </div>
           <div class="form-group">
             <label for="nome">Nome</label>
